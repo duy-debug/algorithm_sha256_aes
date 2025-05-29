@@ -1,0 +1,7 @@
+CREATE DATABASE FormLogin;
+USE FormLogin;
+CREATE TABLE users (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    username NVARCHAR(50) UNIQUE NOT NULL,
+    password_hash NVARCHAR(64) NOT NULL
+);
