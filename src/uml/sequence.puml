@@ -1,0 +1,12 @@
+@startuml
+actor "Người dùng" as ND
+participant "Giao diện" as UI
+participant "Hệ thống" as HT
+
+ND -> UI : Thực hiện chức năng\n(Đăng nhập, Mã hóa, Giải mã...)
+UI -> HT : Gửi yêu cầu xử lý
+HT -> HT : Xử lý yêu cầu
+HT --> UI : Trả về kết quả
+deactivate HT
+UI --> ND : Hiển thị kết quả
+@enduml

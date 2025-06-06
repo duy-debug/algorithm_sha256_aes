@@ -216,8 +216,7 @@ public class SHA_256Panel extends JPanel {
         // Panel cho mode selection
         JPanel modePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         modePanel.setBackground(BACKGROUND_COLOR);
-        modePanel.add(textModeRadio);
-        modePanel.add(fileModeRadio);
+        modePanel.add(textModeRadio);        modePanel.add(fileModeRadio);
         modePanel.add(compareModeRadio);
         modePanel.add(verifyModeRadio);
 

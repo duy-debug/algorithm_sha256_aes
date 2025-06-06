@@ -209,8 +209,7 @@ public class AESPanel extends JPanel {
     outputPanel.setBackground(BACKGROUND_COLOR);
     JLabel outputLabel = new JLabel("Kết quả");
     outputLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
-    outputLabel.setForeground(TEXT_COLOR);
-    outputPanel.add(outputLabel, BorderLayout.NORTH);
+    outputLabel.setForeground(TEXT_COLOR);    outputPanel.add(outputLabel, BorderLayout.NORTH);
     outputPanel.add(new JScrollPane(outputTextArea), BorderLayout.CENTER);
 
     textPanel.add(inputPanel);

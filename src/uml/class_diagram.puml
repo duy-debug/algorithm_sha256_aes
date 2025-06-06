@@ -1,0 +1,156 @@
+@startuml
+
+' Style configurations
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam linetype ortho
+left to right direction
+skinparam nodesep 40
+skinparam ranksep 40
+skinparam padding 4
+skinparam roundcorner 10
+skinparam defaultFontSize 10
+skinparam classFontSize 10
+skinparam packageFontSize 10
+
+' Layout configuration
+together {
+    package "algorithm" {
+        class AES {
+            -byte[] key
+            -byte[] iv
+            +encrypt(byte[] data): byte[]
+            +decrypt(byte[] encryptedData): byte[]
+            +generateKey(): void
+            +generateIV(): void
+        }
+
+        class SHA_256 {
+            +hash(String input): String
+            +hash(byte[] input): byte[]
+            +verify(String input, String hash): boolean
+        }
+    }
+}
+
+together {
+    package "db" {
+        class DatabaseConnection {
+            -String url
+            -String username
+            -String password
+            -Connection connection
+            +getConnection(): Connection
+            +closeConnection(): void
+        }
+
+        class User {
+            -int id
+            -String username
+            -String password
+            -String email
+            +getters()
+            +setters()
+        }
+
+        class UserDatabase {
+            +addUser(User user): boolean
+            +getUser(String username): User
+            +updateUser(User user): boolean
+            +deleteUser(int id): boolean
+            +validateUser(String username, String password): boolean
+        }
+    }
+}
+
+together {
+    package "gui" {
+        class LoginFrame {
+            -JTextField usernameField
+            -JPasswordField passwordField
+            -JButton loginButton
+            -JButton registerButton
+            +actionPerformed(ActionEvent e): void
+        }
+
+        class RegisterFrame {
+            -JTextField usernameField
+            -JPasswordField passwordField
+            -JTextField emailField
+            -JButton registerButton
+            +actionPerformed(ActionEvent e): void
+        }
+
+        class MainFrame {
+            -JTabbedPane tabbedPane
+            -AESPanel aesPanel
+            -SHA_256Panel sha256Panel
+            +initComponents(): void
+        }
+
+        class AESPanel {
+            -JTextArea inputArea
+            -JTextArea outputArea
+            -JButton encryptButton
+            -JButton decryptButton
+            +actionPerformed(ActionEvent e): void
+        }
+
+        class SHA_256Panel {
+            -JTextArea inputArea
+            -JTextArea outputArea
+            -JButton hashButton
+            +actionPerformed(ActionEvent e): void
+        }
+    }
+}
+
+together {
+    package "main" {
+        class Main {
+            +main(String[] args): void
+        }
+
+        class FileEncryptionDemo {
+            +encryptFile(String inputFile, String outputFile): void
+            +decryptFile(String inputFile, String outputFile): void
+        }
+    }
+}
+
+together {
+    package "utils" {
+        class Constants {
+            {static} +String DB_URL
+            {static} +String DB_USERNAME
+            {static} +String DB_PASSWORD
+        }
+
+        class FileEncryption {
+            +encryptFile(String inputPath, String outputPath): void
+            +decryptFile(String inputPath, String outputPath): void
+        }
+    }
+}
+
+' Relationships
+Main --> MainFrame
+MainFrame --> AESPanel
+MainFrame --> SHA_256Panel
+MainFrame --> LoginFrame
+LoginFrame --> RegisterFrame
+
+AESPanel --> AES
+SHA_256Panel --> SHA_256
+
+LoginFrame --> UserDatabase
+RegisterFrame --> UserDatabase
+UserDatabase --> DatabaseConnection
+UserDatabase --> User
+
+FileEncryptionDemo --> AES
+FileEncryption --> AES
+
+DatabaseConnection ..> Constants
+
+@enduml 

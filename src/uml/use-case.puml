@@ -1,0 +1,37 @@
+@startuml
+' Căn chỉnh từ trên xuống
+top to bottom direction
+
+skinparam usecase {
+  BorderColor black
+  BackgroundColor white
+  ArrowColor black
+  FontSize 14
+}
+
+skinparam rectangle {
+  BorderColor black
+  FontStyle bold
+}
+
+actor "Người dùng" as ND
+
+' Dùng partition để căn đều 6 chức năng trong khung
+rectangle "<b>Hệ thống mã hóa</b>" {
+  ' Sắp xếp use case theo hàng ngang
+  usecase UC1 as "Đăng nhập"
+  usecase UC2 as "Đăng ký"
+  usecase UC3 as "Hàm băm SHA-256"
+  usecase UC4 as "Mã hóa AES"
+  usecase UC5 as "Giải mã AES"
+  usecase UC6 as "Xem lịch sử mã hóa"
+}
+
+' Mũi tên thẳng đứng từ actor xuống từng use case
+ND -down-> UC1
+ND -down-> UC2
+ND -down-> UC3
+ND -down-> UC4
+ND -down-> UC5
+ND -down-> UC6
+@enduml
