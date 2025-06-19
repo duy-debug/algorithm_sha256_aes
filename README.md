@@ -59,9 +59,3 @@ src/
 - Ứng dụng sử dụng các thuật toán mã hóa mạnh (SHA-256 và AES)
 - Thông tin đăng nhập được mã hóa và bảo vệ
 - Kết nối cơ sở dữ liệu được bảo mật
-
-## Đóng góp
-Mọi đóng góp đều được hoan nghênh. Vui lòng tạo issue hoặc pull request để đóng góp.
-
-## Giấy phép
-Project này được phân phối dưới giấy phép MIT.
